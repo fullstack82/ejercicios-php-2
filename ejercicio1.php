@@ -5,7 +5,7 @@
 * - Recorrer y mostrarlo;
 * - Ordenarlo y mostrarlo;
 * - Mostrar su longitud;
-* - Buscar algun elemento del array;
+* - Buscar algun elemento del array (buscar por el parametro que me llegue por la url)
 */
 
 function mostrarArray($numeros){
@@ -37,14 +37,24 @@ echo count($numeros);
 
 
 $busqueda = 155;
-echo "<h1> Buscar en el array el número $busqueda </h1>";    // Busqueda en el array;
-$search = array_search($busqueda, $numeros);
 
-if(empty(!$search)){
-    echo "<h4>El número buscado existe en el array, en el indice: $search </h4>";
-}else{
-    echo "No existe el numero buscado en el array";
+if(isset($_GET['numero'])){        //metodo get, se pone en la direccion de localhost y se empieza con (?)seguido del parametro
+    $busqueda = $_GET['numero'];
+    echo "<h1> Buscar en el array el número $busqueda </h1>";    // Busqueda en el array;
+    $search = array_search($busqueda, $numeros);
+    var_dump($search);
+    
+    
+    if(empty(!$search)){
+        echo "<h4>El número buscado existe en el array, en el indice: $search </h4>";
+    }else{
+        echo "No existe el numero buscado en el array";
+    }
 }
+
+
+
+
 
 echo "<h1> Muestra la informacion tipo y valor </h1>"; 
 var_dump($numero);
